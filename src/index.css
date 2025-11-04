@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-blue-400: hsl(180, 66%, 49%);
+  --color-purple-950: hsl(257, 27%, 26%);
+  --color-red-400: hsl(0, 87%, 67%);
+  --color-gray-400: hsl(0, 0%, 75%);
+  --color-gray-500: hsl(257, 7%, 63%);
+  --color-gray-900: hsl(255, 11%, 22%);
+  --color-gray-950: hsl(260, 8%, 14%);
+  --font-*: initial;
+  --font-poppins: "Poppins", sans-serif;
+  --font-weight-bold: 700;
+  --font-weight-medium: 500;
+}
+
+@font-face {
+  font-family: "Poppins"; /* Choose a descriptive name for your font */
+  src: url("./assets/fonts/Poppins-Medium.ttf") format("truetype"); /* Adjust path and format as needed */
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Poppins"; /* Choose a descriptive name for your font */
+  src: url("./assets/fonts/Poppins-Bold.ttf") format("truetype"); /* Adjust path and format as needed */
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.padding-y {
+  @apply py-12 max-lg:py-6;
+}
+
+.padding-t {
+  @apply pt-12 max-lg:pt-6;
+}
+
+.padding-x {
+  @apply px-40 max-lg:px-8;
+}
