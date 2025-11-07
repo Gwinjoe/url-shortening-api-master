@@ -5,15 +5,18 @@ import {
   bgShortenDesktop,
   iconBrandRecognition,
   iconDetailedRecords,
-  facebook,
   iconFullyCustom,
-  instagram,
-  pinterest,
-  twitter,
   illustrationWorking,
   logo,
   hamburger,
 } from "../assets/";
+
+import {
+  Facebook,
+  Twitter,
+  Pinterest,
+  Instagram,
+} from "../components/socialIcons.tsx";
 
 export const navLinks = [
   {
@@ -97,19 +100,19 @@ export const boost = {
 
 export const socials = [
   {
-    icon: facebook,
+    icon: Facebook,
     href: "https://facebook.com",
   },
   {
-    icon: twitter,
+    icon: Twitter,
     href: "https://x.com",
   },
   {
-    icon: pinterest,
+    icon: Pinterest,
     href: "https://pinterest.com",
   },
   {
-    icon: instagram,
+    icon: Instagram,
     href: "https://instagram.com",
   },
 ];

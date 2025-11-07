@@ -7,12 +7,8 @@ import ShortLink from "../components/ShortLink";
 const Linkshortener = () => {
   const [error, setError] = useState(false);
   const [copied, setCopied] = useState(false);
-
-  const handleSubmit = () => {
-    alert("i'll work when you work on me");
-  };
-
-  const shortendata = [
+  const [longUrl, setLongUrl] = useState("");
+  const [shortendata, setShortendata] = useState([
     {
       url: "https://frontendmentor.io",
       shortenedurl: "https://rel.link/kafj",
@@ -25,7 +21,29 @@ const Linkshortener = () => {
       url: "https://younevercantell.com",
       shortenedurl: "https://rel.link/eftsa",
     },
-  ];
+  ]);
+
+  const handleSubmit = async () => {
+    if (!longUrl && !longUrl.length) {
+      setError(true);
+    } else {
+      const json = await fetch(
+        `https://cleanuri.com/api/v1/shorten?url=${longUrl}`,
+        {
+          method: "POST",
+        },
+      );
+      const response = json.json();
+      setShortendata((data) => [
+        ...data,
+        { url: longUrl, shortenedurl: response.result_url },
+      ]);
+    }
+  };
+
+  const handleInput = (e) => {
+    setLongUrl(e.target.value);
+  };
 
   return (
     <div className="w-full -top-28 relative flex flex-col  gap-6">
@@ -38,6 +56,8 @@ const Linkshortener = () => {
           <input
             className={`${error && "border-red-400 border-3 text-red-400/50"} bg-white px-5 h-16 max-md:h-12 w-full text-gray-500 rounded-md `}
             placeholder={shorten.input.placeholder}
+            value={longUrl}
+            onChange={handleInput}
           />
           {error && (
             <p className="text-red-400 italic text-sm ml-2">

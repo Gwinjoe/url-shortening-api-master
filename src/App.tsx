@@ -6,7 +6,7 @@ import Footer from "./sections/Footer.tsx";
 
 function App() {
   return (
-    <main className="w-screen max-sm:text-md max-sm:leading-6 max-w-[1440px] border-2 border-red-400 font-poppins">
+    <main className="w-screen max-sm:text-md max-sm:leading-6 max-w-[1440px] font-poppins">
       <Header />
       <section className="padding-t  pb-30">
         <Hero />
