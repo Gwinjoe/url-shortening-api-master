@@ -4,10 +4,10 @@ const DesktopNav = () => {
   return (
     <nav className="max-md:hidden flex items-center justify-between">
       <div className="flex gap-8 items-center">
-        <Logo className="cursor-pointer" fill />
+        <Logo className="cursor-pointer fill-gray-900" fill={false} />
         <ul className="flex gap-8">
           {navLinks.map(({ label, href }) => (
-            <li className="hover:text-gray-900">
+            <li className="hover:text-gray-900" key={label}>
               <a href={href}>{label}</a>
             </li>
           ))}

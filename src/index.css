@@ -44,6 +44,9 @@ body {
   @apply pt-12 max-lg:pt-6;
 }
 
+.margin-t {
+  @apply mt-40 max-md:mt-20;
+}
 .padding-x {
-  @apply px-40 max-lg:px-8;
+  @apply px-40 max-md:px-6 max-xl:px-12;
 }
