@@ -27,28 +27,33 @@ const Linkshortener = () => {
   }, [shortendata]);
 
   const endpoint = import.meta.env.VITE_ENDPOINT;
-  const localendpoint = import.meta.env.VITE_LOCALENDPOINT;
+  // const localendpoint = import.meta.env.VITE_LOCALENDPOINT;
   const handleSubmit = async () => {
     if (!longUrl && !longUrl.length) {
       setError(true);
       return;
     } else {
-      setLoading(true);
-      const json = await fetch(`${endpoint}/shorten`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          url: longUrl,
-        }),
-      });
-      const response = await json.json();
-      setShortendata((data: Data[]) => [
-        ...data,
-        { url: longUrl, shortenedurl: response.result_url },
-      ]);
-      setLoading(false);
+      try {
+        setLoading(true);
+        const json = await fetch(`${endpoint}/shorten`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            url: longUrl,
+          }),
+        });
+        const response = await json.json();
+        setShortendata((data: Data[]) => [
+          ...data,
+          { url: longUrl, shortenedurl: response.result_url },
+        ]);
+        setLoading(false);
+      } catch (err: unknown) {
+        setError(true);
+        setErrorData(err.name);
+      }
     }
   };
 

@@ -12,6 +12,7 @@ import twitter from "./icon-twitter.svg";
 import illustrationWorking from "./illustration-working.svg";
 import logo from "./logo.svg";
 import hamburger from "./icon-hamburger.svg";
+import closeIcon from "./close-icon.png";
 
 export {
   bgBoostDesktop,
@@ -28,4 +29,5 @@ export {
   illustrationWorking,
   logo,
   hamburger,
+  closeIcon,
 };

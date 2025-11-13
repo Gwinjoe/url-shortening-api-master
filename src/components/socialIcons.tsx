@@ -1,4 +1,8 @@
-export const Pinterest = ({ className }) => {
+interface Props {
+  className: string;
+}
+
+export const Pinterest: React.FC<Props> = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -11,7 +15,7 @@ export const Pinterest = ({ className }) => {
   );
 };
 
-export const Instagram = ({ className }) => {
+export const Instagram: React.FC<Props> = ({ className }) => {
   return (
     <svg
       className={className}
@@ -24,7 +28,7 @@ export const Instagram = ({ className }) => {
   );
 };
 
-export const Facebook = ({ className }) => {
+export const Facebook: React.FC<Props> = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -37,7 +41,7 @@ export const Facebook = ({ className }) => {
   );
 };
 
-export const Twitter = ({ className }) => {
+export const Twitter: React.FC<Props> = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
