@@ -6,9 +6,7 @@ import {
   iconBrandRecognition,
   iconDetailedRecords,
   iconFullyCustom,
-  illustrationWorking,
   logo,
-  hamburger,
 } from "../assets/";
 
 import {
