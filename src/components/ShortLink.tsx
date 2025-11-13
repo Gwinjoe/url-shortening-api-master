@@ -6,7 +6,7 @@ const ShortLink = ({ data }) => {
   const handleCopy = async () => {
     try {
       if (!copied) {
-        await navigator.clipboard.write(data.shortenedurl);
+        await navigator.clipboard.writeText(data.shortenedurl);
         setCopied(true);
         setTimeout(() => {
           setCopied(false);

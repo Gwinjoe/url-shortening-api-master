@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DesktopShorten from "../components/DesktopShorten";
 import MobileShorten from "../components/MobileShorten";
 import { shorten } from "../constants";
@@ -6,38 +6,44 @@ import ShortLink from "../components/ShortLink";
 
 const Linkshortener = () => {
   const [error, setError] = useState(false);
-  const [copied, setCopied] = useState(false);
+  const [errorData, setErrorData] = useState("");
   const [longUrl, setLongUrl] = useState("");
-  const [shortendata, setShortendata] = useState([
-    {
-      url: "https://frontendmentor.io",
-      shortenedurl: "https://rel.link/kafj",
-    },
-    {
-      url: "https://google.com",
-      shortenedurl: "https://rel.link/asdfa",
-    },
-    {
-      url: "https://younevercantell.com",
-      shortenedurl: "https://rel.link/eftsa",
-    },
-  ]);
+  const [loading, setLoading] = useState(false);
+  const [shortendata, setShortendata] = useState(() => {
+    const data = localStorage.getItem("data");
+    if (data && data.length) {
+      return JSON.parse(data);
+    }
+    return [];
+  });
 
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(shortendata));
+  }, [shortendata]);
+
+  const endpoint = import.meta.env.VITE_ENDPOINT;
+  const localendpoint = import.meta.env.VITE_LOCALENDPOINT;
   const handleSubmit = async () => {
     if (!longUrl && !longUrl.length) {
       setError(true);
+      return;
     } else {
-      const json = await fetch(
-        `https://cleanuri.com/api/v1/shorten?url=${longUrl}`,
-        {
-          method: "POST",
+      setLoading(true);
+      const json = await fetch(`${endpoint}/shorten`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
-      const response = json.json();
+        body: JSON.stringify({
+          url: longUrl,
+        }),
+      });
+      const response = await json.json();
       setShortendata((data) => [
         ...data,
         { url: longUrl, shortenedurl: response.result_url },
       ]);
+      setLoading(false);
     }
   };
 
@@ -61,7 +67,7 @@ const Linkshortener = () => {
           />
           {error && (
             <p className="text-red-400 italic text-sm ml-2">
-              {shorten.input.error}
+              {errorData ? errorData : shorten.input.error}
             </p>
           )}
         </div>
@@ -69,7 +75,7 @@ const Linkshortener = () => {
           onClick={handleSubmit}
           className="bg-blue-400 px-5 h-16 max-md:h-12 text-nowrap font-bold max-md:w-full z-3 rounded-xl text-white cursor-pointer hover:bg-blue-400/70"
         >
-          {shorten.btnLabel}
+          {loading ? "loading" : shorten.btnLabel}
         </button>
       </div>
       <div className="flex flex-col gap-4">
