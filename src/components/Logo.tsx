@@ -1,4 +1,9 @@
-const Logo = ({ className, fill = false }) => {
+interface Props {
+  className?: string;
+  fill?: boolean;
+}
+
+const Logo: React.FC<Props> = ({ className, fill = false }) => {
   return (
     <svg
       className={className}

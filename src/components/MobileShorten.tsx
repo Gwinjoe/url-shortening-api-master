@@ -1,4 +1,7 @@
-const MobileShorten = ({ className }) => {
+interface Props {
+  className: string;
+}
+const MobileShorten: React.FC<Props> = ({ className }) => {
   return (
     <svg
       className={className}

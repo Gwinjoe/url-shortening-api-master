@@ -4,6 +4,11 @@ import MobileShorten from "../components/MobileShorten";
 import { shorten } from "../constants";
 import ShortLink from "../components/ShortLink";
 
+interface Data {
+  url: string;
+  shortenedurl: string;
+}
+
 const Linkshortener = () => {
   const [error, setError] = useState(false);
   const [errorData, setErrorData] = useState("");
@@ -39,7 +44,7 @@ const Linkshortener = () => {
         }),
       });
       const response = await json.json();
-      setShortendata((data) => [
+      setShortendata((data: Data[]) => [
         ...data,
         { url: longUrl, shortenedurl: response.result_url },
       ]);
@@ -47,7 +52,7 @@ const Linkshortener = () => {
     }
   };
 
-  const handleInput = (e) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setLongUrl(e.target.value);
   };
 
@@ -79,7 +84,7 @@ const Linkshortener = () => {
         </button>
       </div>
       <div className="flex flex-col gap-4">
-        {shortendata.map((data) => (
+        {shortendata.map((data: Data) => (
           <div key={data.url}>
             <ShortLink data={data} />
           </div>

@@ -1,4 +1,8 @@
-const MobileBoost = ({ className }) => {
+interface Props {
+  className: string;
+}
+
+const MobileBoost: React.FC<Props> = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

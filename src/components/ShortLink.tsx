@@ -1,6 +1,13 @@
 import { useState } from "react";
 
-const ShortLink = ({ data }) => {
+interface Data {
+  data: {
+    url: string;
+    shortenedurl: string;
+  };
+}
+
+const ShortLink: React.FC<Data> = ({ data }) => {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {

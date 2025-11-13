@@ -1,4 +1,7 @@
-const DesktopShorten = ({ className }) => {
+interface Props {
+  className: string;
+}
+const DesktopShorten: React.FC<Props> = ({ className }) => {
   return (
     <svg
       className={className}

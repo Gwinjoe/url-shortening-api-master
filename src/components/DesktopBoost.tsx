@@ -1,4 +1,7 @@
-const DesktopBoost = ({ className }) => {
+interface Props {
+  className: string;
+}
+const DesktopBoost: React.FC<Props> = ({ className }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

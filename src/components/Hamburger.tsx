@@ -1,4 +1,9 @@
-const Hamburger = ({ className, fill }) => {
+interface Props {
+  className?: string;
+  fill?: boolean;
+}
+
+const Hamburger: React.FC<Props> = ({ className, fill }) => {
   return (
     <svg
       className={className}
