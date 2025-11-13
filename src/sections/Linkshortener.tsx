@@ -51,8 +51,10 @@ const Linkshortener = () => {
         ]);
         setLoading(false);
       } catch (err: unknown) {
-        setError(true);
-        setErrorData(err.name);
+        if (err instanceof Error) {
+          setError(true);
+          setErrorData(err.message);
+        }
       }
     }
   };
